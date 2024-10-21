@@ -10,8 +10,7 @@ jobs:
     steps:
       - name: Set VERSION
         run: |
-          VER=$(cat ${{ env.VERSION }}/VERSION)
-          echo "VERSION=$VER" >> $GITHUB_ENV
+          echo "VERSION=$(cat ./VERSION)" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up QEMU
