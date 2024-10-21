@@ -1,9 +1,8 @@
 name: Docker Image CI
 on:
   push:
-    paths:
-      - "VERSION"
-      - ".github/workflows/docker-ci.yaml"
+    paths-ignore:
+    - '**.md'
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -28,6 +27,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          build-args: DNSMASQ_VERSION=${{ env.VERSION }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: |
