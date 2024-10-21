@@ -3,13 +3,14 @@ on:
   push:
     paths:
       - "VERSION"
+      - ".github/workflows/docker-ci.yaml"
 jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
       - name: Set VERSION
         run: |
-          VER=$(cat VERSION)
+          VER=$(cat ${{ env.VERSION }}/VERSION)
           echo "VERSION=$VER" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v4
