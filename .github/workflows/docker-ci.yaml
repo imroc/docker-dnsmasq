@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: list file
         run: |
-          echo "$(ls ${{ env.GITHUB_WORKSPACE }})"
+          echo "workspace: $GITHUB_WORKSPACE"
       - name: Set VERSION
         run: |
           VER="$(cat VERSION)"
